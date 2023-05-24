@@ -13,9 +13,12 @@ import AddMusic from "../fragment/AddMusic";
 import FooterSelectMusic from "../fragment/FooterSelectMusic";
 import CurrentPlayingLarge from "../fragment/CurrentPlayingLarge";
 import Search from "./Search";
-import About from "./About";
+import About from "./MostPlayed";
 import Playlist from "../fragment/Playlist";
 import {Skeleton} from "@material-ui/lab";
+import Admin from "../fragment/Admin";
+import MostPlayed from "./MostPlayed";
+
 
 function getCurrPage(pathName) {
     switch (pathName) {
@@ -27,8 +30,8 @@ function getCurrPage(pathName) {
             return <Profile/>
         case "/home/add":
             return <AddMusic/>
-       /* case "/home/about":
-            return <About/>*/
+        case "/home/mostplayed":
+            return <MostPlayed/>
         default:
             if (pathName.startsWith("/home/playlist/")) {
                 return <Playlist/>
@@ -87,6 +90,13 @@ function Home() {
                             screenSize <= 970 ?
                                 <MobileTopNavigation/> :
                                 <Navigation/>
+                        
+                        }
+                        {
+                           /* screenSize <= 970 ?
+                                <MobileTopNavigation/> :
+                                <Admin/>*/
+                        
                         }
                         <section className={"home-music-container"}>
                             <div className="sidebar-home">
