@@ -8,7 +8,7 @@ import BottomNavigationMobile from "../fragment/BottomNavigationMobile";
 import MusicCardContainer from "../fragment/MusicCardContainer";
 import {useSelector} from "react-redux";
 import {ThemeContext} from "../../api/Theme";
-import Profile from "./Profile";
+import MostPlay from "./MostPlay";
 import AddMusic from "../fragment/AddMusic";
 import FooterSelectMusic from "../fragment/FooterSelectMusic";
 import CurrentPlayingLarge from "../fragment/CurrentPlayingLarge";
@@ -22,8 +22,8 @@ function getCurrPage(pathName) {
             return <MusicCardContainer/>
         case "/home/search":
             return <Search/>
-        case "/home/profile":
-            return <Profile/>
+        case "/home/mostplay":
+            return <MostPlay/>
         case "/home/add":
             return <AddMusic/>
         case "/home/about":
@@ -89,7 +89,7 @@ function Home() {
                         }
                         <section className={"home-music-container"}>
                             <div className="sidebar-home">
-                                <SideBar/>
+                               <SideBar></SideBar>
                             </div>
                             <div className="main-home">
                                 {

@@ -1,7 +1,13 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import '../assets/scss/AddMusic.css';
+import {Add, Image, MusicNoteTwoTone} from "@material-ui/icons";
+import {Button, FormGroup} from "@material-ui/core";
+import {ThemeContext} from "../../api/Theme";
+import musicDB from "../../db/music";
+import { NavLink } from "react-router-dom";
 import database from '../../db/database';
-
+import { render } from '@testing-library/react';
+import Form from '@material-ui/core';
 export default class AddMusic extends React.Component {
     constructor(props){
         super(props);
@@ -51,11 +57,15 @@ export default class AddMusic extends React.Component {
        
         return false;
     }
+    
 
     render(){
     const musicDB = this.state.musicDB;
+    function refreshPage() {
+        window.location.reload(false);
+    }
     return (
-        <form  className={"AddMusic"}>
+        <FormGroup  className={"AddMusic"}>
             <div className="add-music-sub-container">
                 <div className="d1">
                     <input  accept="image/*" type="file" hidden id={"music-img"}/>
@@ -65,19 +75,28 @@ export default class AddMusic extends React.Component {
                 <div className="d2">
                     <div>
                     <form method="post" onSubmit={this.formSubmit}>
-                            <div class="form-group">
-                                <input onChange={this.handleInput} type="text" name="name" placeholder=" name"/>
+                    <div className="form-group">
+                                <input onChange={this.handleInput} type="number" name="id" placeholder="id"/>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
+                                <input onChange={this.handleInput} type="text" name="name" placeholder="name"/>
+                            </div>
+                            <div className="form-group">
+                                <input onChange={this.handleInput} type="text" name="author_name" placeholder="author name"/>
+                            </div>
+                            <div className="form-group">
                                 <input onChange={this.handleInput} type="text" name="img" placeholder="img"/>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input onChange={this.handleInput} type="text" name="musicName" placeholder="musicName"/>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
+                                <input onChange={this.handleInput} type="number" name="timePlayed" placeholder="Time Played"/>
+                            </div>
+                            <div className="form-group">
                                 <input onChange={this.handleInput} type="text" name="type" placeholder="type"/>
                             </div>
-                            <button type="submit" class="site-btn">Add</button>
+                            <button onClick={refreshPage} type="submit" className="site-btn">Add</button>
                         </form>
                         
                     </div>
@@ -85,9 +104,8 @@ export default class AddMusic extends React.Component {
                 </div>
             </div>
 
-        </form>
+        </FormGroup>
     );
 }
 
 }
-//export default AddMusic;

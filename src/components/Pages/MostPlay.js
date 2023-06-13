@@ -8,35 +8,31 @@ import Grade from 'grade-js';
 import SideBarOptions from "../fragment/SideBarOptions";
 import {PlaylistPlay} from "@material-ui/icons";
 
-function Profile() {
-
-    const {playlists} = useSelector(state => state.musicReducer);
+function MostPlay() {
+    
+    var playlists = [];
     const [mostPlayed, setMostPlayed] = useState([]);
-
-    function sortByProperty(property) {
-        return function (a, b) {
-            if (a[property] > b[property])
-                return 1;
-            else if (a[property] < b[property])
-                return -1;
-
-            return 0;
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            playlists = JSON.parse(localStorage.getItem("musicDB"));
+            console.log(playlists);
+            setMostPlayed(playlists);
+          } catch (error) {
+            // Xử lý lỗi tại đây
+            console.error(error);
+          }
         }
-    }
-
-    useEffect(() => {
-        setMostPlayed(playlists.sort(sortByProperty("timesPlayed")));
-    }, [playlists]);
-
-    useEffect(() => {
-        Grade(document.querySelectorAll('.gradient-wrap'))
-    });
-
+      
+        fetchData();
+      }, []);
+      
     return (
         <Container>
             <div className={"Profile"}>
-                <div className="top-profile">
+                    
                     <div className="profile-detail">
+              
                         <span className={"profile-playlist"}>
                             <SideBarOptions className={"lib-sub"} Icon={PlaylistPlay}
                                             href={"/home/playlist/instrumental"} title={"Instrumental"}/>
@@ -44,7 +40,7 @@ function Profile() {
                                             title={"Electronic"}/>
                         </span>
                     </div>
-                </div>
+                
                 <div className="bottom-profile">
                     <div>
                         <h3>Most Played</h3>
@@ -63,4 +59,4 @@ function Profile() {
     );
 }
 
-export default Profile;
+export default MostPlay;
