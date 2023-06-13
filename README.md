@@ -20,3 +20,7 @@
     * ###### [context API](https://reactjs.org/docs/context.html)
     * ###### [scss](https://sass-lang.com/)
    
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes

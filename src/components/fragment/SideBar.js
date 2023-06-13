@@ -26,8 +26,13 @@ function SideBar() {
                 <p className={"p1"}>
                     <span>MY PLAYLIST</span>
                 </p>
-                <SideBarOptions className={"lib-sub"} Icon={PlaylistPlay} href={"/home/playlist/instrumental"}  title={"Instrumental"}/>
-                <SideBarOptions className={"lib-sub"} Icon={PlaylistPlay} href={"/home/playlist/electronic"}  title={"Electronic"}/>
+                {
+                    listtt.map((item) => (
+                        <div key={item.id}>
+                        <SideBarOptions className={"lib-sub"} Icon={PlaylistPlay} href={`/home/playlist/${item.name}`}  title={`${item.name}`}/>
+                        </div>
+                    ))
+                }
             </div>
         </aside>
     );

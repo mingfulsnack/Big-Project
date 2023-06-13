@@ -11,7 +11,7 @@ const Playlist = () => {
     const {playlists} = useSelector(state=>state.musicReducer);
     var listMusicc;
     for(var i = 0; i < state.list.length;i++){
-        if(state.list[i].name.toLowerCase() === typeOfPlaylist)
+        if(state.list[i].name.toLowerCase() === typeOfPlaylist.toLowerCase())
         {
             
             listMusicc = state.list[i].listMusic;

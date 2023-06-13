@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 import UserContext from "../../context/UserContext"
 import musicDB from "../../db/music";
 const AddAlbum = () => {
@@ -34,9 +35,7 @@ const AddAlbum = () => {
     dispatch({type:"selected_album",payload:tmp});
     dispatch({type:"hide_bg",payload:isBg});
     setSelectedItem(null);
-    
     localStorage.setItem("state",JSON.stringify(state));
-    
   }
   const buttonClicked = (item) => {
     setSelectedItem(item);
@@ -45,6 +44,19 @@ const AddAlbum = () => {
     dispatch({type:"selected_album",payload:tmp});
     localStorage.setItem("state",JSON.stringify(state));
   };
+  const newAlbum = (item) =>{
+    var tmp = state.list;
+    var nameOfAlbum = document.getElementById("addNewAlbum").value;
+    if(nameOfAlbum != ""){
+       tmp[state.list.length] = {
+          id: state.list.length+1,
+          name: nameOfAlbum,
+          listMusic:[],
+       }
+       dispatch({type:"add_album",payload:tmp});
+       localStorage.setItem("state",JSON.stringify(state));
+    }
+  }
   var listt = state.list;
   return (
         <div className="modal show"style={{ display: 'block', position: 'initial' }}>
@@ -70,6 +82,8 @@ const AddAlbum = () => {
             </Modal.Body>
     
             <Modal.Footer id = "dd">
+              <Form.Control type="text" placeholder="new Album" id = "addNewAlbum"/>
+              <Button variant="primary" onClick = {newAlbum} >New Album</Button>
               <Button  variant="secondary" onClick = {closeClick}>Close</Button>
               <Button variant="primary"onClick = {saveClick}>Save changes</Button>
             </Modal.Footer>

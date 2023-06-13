@@ -19,6 +19,9 @@ const reducer = (state,action)=>{
         case "selected_album":{
             return {...state,isSelectAlbum:state.isSelectAlbum};
         }   
+        case "add_album":{
+            return {...state,list:state.list};
+        }
     }
 }
 export default reducer;
