@@ -1,0 +1,79 @@
+.Profile {
+  display: flex;
+  flex-direction: column;
+}
+.Profile .top-profile {
+  z-index: 10;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid gainsboro;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+.Profile .top-profile .MuiAvatar-root {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+.Profile .top-profile .profile-detail {
+  padding: 10px;
+  margin: 10px;
+  background-color: #f1f1f1;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.Profile .top-profile .profile-detail h3 {
+  font-weight: 600;
+  font-size: 4rem;
+}
+.Profile .top-profile .profile-detail p {
+  font-size: 1.1rem;
+  font-weight: lighter;
+  color: grey;
+}
+.Profile .bottom-profile {
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.Profile .bottom-profile h3 {
+  padding-left: 10px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.Profile .bottom-profile .most-played {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.profile-playlist {
+  display: none;
+}
+@media only screen and (max-width: 970px) {
+  .Profile .top-profile {
+    justify-content: center;
+  }
+  .Profile .bottom-profile {
+    text-align: center;
+  }
+  .Profile .bottom-profile .most-played {
+    justify-content: center;
+  }
+  .profile-playlist {
+    display: block;
+  }
+}
+@media only screen and (max-width: 580px) {
+  .Profile .top-profile .profile-detail h3 {
+    font-size: 3rem;
+  }
+  .Profile .bottom-profile {
+    text-align: center;
+  }
+  .Profile .bottom-profile .most-played {
+    justify-content: center;
+  }
+}

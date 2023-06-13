@@ -1,0 +1,41 @@
+.home-music-container {
+  display: grid;
+  grid-template-columns: 18% 80%;
+  user-select: none;
+}
+
+@media only screen and (max-width: 970px) {
+  .home-music-container {
+    display: flex;
+  }
+}
+.Home-skeleton {
+  height: 100vh;
+  width: 100vw;
+}
+.home-music-container {
+  display: flex;
+}
+.home-music-container .sidebar-home {
+  flex: 0.2;
+}
+.home-music-container .main-home {
+  flex: 0.8;
+}
+.current-large-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90vh;
+}
+@media only screen and (max-width: 970px) {
+  .home-music-container .sidebar-home {
+    flex: 0;
+  }
+  .home-music-container .main-home {
+    flex: 1;
+  }
+}
+
+
