@@ -7,7 +7,6 @@ import musicDB from "../../db/music";
 import { NavLink } from "react-router-dom";
 import database from '../../db/database';
 import { render } from '@testing-library/react';
-
 export default class AddMusic extends React.Component {
     constructor(props){
         super(props);
@@ -57,9 +56,13 @@ export default class AddMusic extends React.Component {
        
         return false;
     }
+    
 
     render(){
     const musicDB = this.state.musicDB;
+    function refreshPage() {
+        window.location.reload(false);
+    }
     return (
         <form  className={"AddMusic"}>
             <div className="add-music-sub-container">
@@ -71,8 +74,14 @@ export default class AddMusic extends React.Component {
                 <div className="d2">
                     <div>
                     <form method="post" onSubmit={this.formSubmit}>
+                    <div class="form-group">
+                                <input onChange={this.handleInput} type="number" name="id" placeholder="id"/>
+                            </div>
                             <div class="form-group">
-                                <input onChange={this.handleInput} type="text" name="name" placeholder=" name"/>
+                                <input onChange={this.handleInput} type="text" name="name" placeholder="name"/>
+                            </div>
+                            <div class="form-group">
+                                <input onChange={this.handleInput} type="text" name="author_name" placeholder="author name"/>
                             </div>
                             <div class="form-group">
                                 <input onChange={this.handleInput} type="text" name="img" placeholder="img"/>
@@ -81,9 +90,12 @@ export default class AddMusic extends React.Component {
                                 <input onChange={this.handleInput} type="text" name="musicName" placeholder="musicName"/>
                             </div>
                             <div class="form-group">
+                                <input onChange={this.handleInput} type="number" name="timePlayed" placeholder="Time Played"/>
+                            </div>
+                            <div class="form-group">
                                 <input onChange={this.handleInput} type="text" name="type" placeholder="type"/>
                             </div>
-                            <button type="submit" class="site-btn">Add</button>
+                            <button onClick={refreshPage} type="submit" class="site-btn">Add</button>
                         </form>
                         
                     </div>
@@ -96,4 +108,3 @@ export default class AddMusic extends React.Component {
 }
 
 }
-//export default AddMusic;
